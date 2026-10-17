@@ -1,0 +1,10 @@
+{
+  "name": "com.snow-16.swiss_army_code",
+  "version": "1.0.0",
+  "displayName": "SwissArmyCode",
+  "description": "Unity用便利系ライブラリ",
+  "unity": "6000.3.14f1",
+  "author": {
+    "name": "snow-16"
+  }
+}
