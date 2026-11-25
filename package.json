@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "displayName": "SwissArmyCode",
   "description": "Unity用便利系ライブラリ",
-  "unity": "6000.3.14f1",
+  "unity": "6000.3.10f1",
   "author": {
     "name": "snow-16"
   }
