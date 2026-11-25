@@ -11,6 +11,11 @@ namespace Snow.SwissArmyCode.Random
         [SerializeField]
         private List<ProbSet<T>> _probTable = new();
 
+        public Gacha(params T[] table)
+        {
+            _probTable = new(table.Select(e => new ProbSet<T>(1, e)));
+        }
+
         public T NextSimple()
         {
             return Next().Prize;
@@ -74,5 +79,11 @@ namespace Snow.SwissArmyCode.Random
         [SerializeField]
         private T _prize;
         public T Prize => _prize;
+
+        public ProbSet(float prob, T prize)
+        {
+            _prob = prob;
+            _prize = prize;
+        }
     }
 }
