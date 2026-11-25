@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Snow.SwissArmyCode.Random
+namespace Snow.SwissArmyCode.Unique
 {
     [Serializable]
     public class Gacha<T>
