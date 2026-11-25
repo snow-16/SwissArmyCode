@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Snow.SwissArmyCode.EnumControlle
+namespace Snow.SwissArmyCode.State
 {
     public class BitFlag<T> where T : Enum
     {
