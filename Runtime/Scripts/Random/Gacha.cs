@@ -11,11 +11,16 @@ namespace Snow.SwissArmyCode.Random
         [SerializeField]
         private List<ProbSet<T>> _probTable = new();
 
-        public T Next()
+        public T NextSimple()
+        {
+            return Next().Prize;
+        }
+
+        public ProbSet<T> Next()
         {
             if(_probTable.Count == 0)
             {
-                Debug.LogError($"{typeof(T)}のガチャに確率テーブルは空です。");
+                Debug.LogError($"{typeof(T)}のガチャの確率テーブルは空です。");
                 return default;
             }
 
@@ -27,13 +32,35 @@ namespace Snow.SwissArmyCode.Random
             {
                 if(r >= underBorder && r < underBorder + p.Prob)
                 {
-                    return p.Prize;
+                    return p;
                 }
 
                 underBorder += p.Prob;
             }
 
-            return _probTable.Last().Prize;
+            return _probTable.Last();
+        }
+
+        public T[] NextNoDuplicates(int count)
+        {
+            if(_probTable.Count < count)
+            {
+                Debug.LogError($"{typeof(T)}のガチャの要素数より多い抽選回数が指定されています。");
+                return null;
+            }
+
+            var arr = new T[count];
+            var copyTable = new List<ProbSet<T>>(_probTable);
+
+            for(int i = 0; i < count; i++)
+            {
+                var newPrize = Next();
+                arr[i] = newPrize.Prize;
+                _probTable.Remove(newPrize);
+            }
+
+            _probTable = copyTable;
+            return arr;
         }
     }
 
